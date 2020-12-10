@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {usersWithAddress} from "./arraysOfObjects/usersList";
+import {cars} from "./arraysOfObjects/carsList";
+import UserComponent from "./components/user/UserComponent";
+import CarsComponent from "./components/car/CarsComponent";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <div>
+                    {
+                        usersWithAddress.map(human => <UserComponent user = {human} key = {human.id}/>)
+                    }
+                </div>
+                <div className={'forCars'}>
+                    {
+                        cars.map((someCar, index) => <CarsComponent car = {someCar} key = {index}/>)
+                    }
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
